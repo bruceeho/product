@@ -1,14 +1,18 @@
+import os
+
 #讀取檔案
 products = []#大清單
-with open('products.csv', 'r',encoding = 'UTF-8') as f:
-    for line in f:
-    	if '商品,價格,數量,總金額' in line:
-    		continue
-    	name,price,quantity,total = line.strip().split(',')
-    	#print(s)
-    	products.append([name,price,quantity,total])
-print(products)
-
+if os.path.isfile('products.csv'):#檢查檔案是否存在
+	print('已找到檔案')
+	with open('products.csv','r',encoding = 'UTF-8') as f:
+		for line in f:
+			if '商品,價格,數量,總金額' in line:
+				continue
+				name,price,quantity,total = line.strip().split(',')
+				products.append([name,price,quantity,total])
+				print(products)
+else:
+	print('找不到檔案')
 
 while True:
     name = input('請輸入商品名稱：')
