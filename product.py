@@ -19,3 +19,7 @@ print(products)
 
 for p in products:
 	print('商品：',p[0],'價格：',p[1],'數量：',p[2],'總金額',p[3])
+
+with open('products.csv','w') as f:
+    for p in products:
+    	f.write(p[0] + ',' +  str(p[1]) + str(p[2]) + str(p[2]) + '\n')
